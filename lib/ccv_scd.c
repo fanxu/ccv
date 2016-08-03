@@ -1242,7 +1242,7 @@ ccv_scd_classifier_cascade_t* ccv_scd_classifier_cascade_read(const char* filena
 	int i;
 	sqlite3* db = 0;
 	ccv_scd_classifier_cascade_t* cascade = 0;
-	if (SQLITE_OK == sqlite3_open(filename, &db))
+	if (SQLITE_OK == sqlite3_open_v2(filename, &db, SQLITE_OPEN_READONLY, "unix-none"))
 	{
 		const char cascade_params_qs[] =
 			"SELECT count, " // 1
